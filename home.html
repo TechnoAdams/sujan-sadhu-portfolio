@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Home - Discord Style Layout</title>
+    <style>
+        /* Basic Discord-like styling */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #36393f; /* Discord dark background */
+            color: #dcddde; /* Light text color */
+            overflow: hidden; /* Prevent scrollbars on body */
+        }
+
+        /* --- Main Chat Interface Container --- */
+        .discord-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Far Left: Server List (Static Placeholders) */
+        .server-list {
+            width: 70px;
+            background-color: #202225; /* Darker background */
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto; /* In case of many servers */
+        }
+        .server-icon {
+            background-color: #36393f; /* Default server bg */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Circle */
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            color: #b9bbbe;
+            cursor: pointer; /* Still indicates clickability, though non-functional */
+            transition: border-radius 0.2s ease, background-color 0.2s ease;
+        }
+        .server-icon:hover {
+            border-radius: 35%; /* Squircle on hover */
+            background-color: #7289da; /* Blurple */
+        }
+         .server-icon.active { /* Style for a selected server */
+             border-radius: 35%;
+             background-color: #7289da;
+         }
+
+        /* Left Sidebar: Channels/DMs/Search */
+        .channel-list {
+            width: 240px;
+            background-color: #2f3136; /* Slightly lighter dark */
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #202225; /* Separator */
+        }
+        .search-bar {
+            padding: 10px;
+            margin: 10px;
+            background-color: #202225; /* Dark input bg */
+            border: none;
+            border-radius: 4px;
+            color: #dcddde;
+            font-size: 14px;
+        }
+        .search-bar::placeholder {
+             color: #72767d;
+        }
+        .dm-header {
+            padding: 18px 10px 4px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #8e9297; /* Muted header color */
+            text-transform: uppercase;
+        }
+        .dm-placeholder {
+            padding: 10px 20px;
+            color: #72767d;
+            font-style: italic;
+            font-size: 14px;
+        }
+        /* Added style for About link */
+        .about-link {
+            padding: 10px 20px;
+            color: #b9bbbe; /* Use a slightly brighter grey */
+            font-size: 14px;
+            text-decoration: none; /* Remove underline */
+            cursor: pointer;
+            margin-top: 10px; /* Add some space above */
+        }
+        .about-link:hover {
+            color: #dcddde; /* Whiter on hover */
+            background-color: rgba(79,84,92,0.16); /* Subtle background on hover */
+        }
+
+
+        /* Main Chat Area */
+        .main-chat {
+            flex-grow: 1; /* Takes remaining width */
+            display: flex;
+            flex-direction: column;
+            background-color: #36393f; /* Main chat area background */
+        }
+        .chat-header {
+            background-color: #36393f; /* Same as main */
+            padding: 10px 15px;
+            border-bottom: 1px solid #202225; /* Darker separator */
+            display: flex;
+            align-items: center;
+            height: 48px; /* Fixed height */
+            box-shadow: 0 1px 0 rgba(4,4,5,0.2), 0 1.5px 0 rgba(6,6,7,0.05), 0 2px 0 rgba(4,4,5,0.05); /* Discord subtle shadow */
+            flex-shrink: 0; /* Prevent header shrinking */
+        }
+        .chat-header h3 {
+            margin: 0;
+            flex-grow: 1;
+            color: #ffffff; /* White title */
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto; /* Enable scrolling for messages */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Basic message styling (adjust as needed) */
+        .message {
+            margin-bottom: 15px;
+            padding: 2px 0; /* Minimal vertical padding */
+            display: flex;
+            align-items: flex-start; /* Align avatar and text */
+        }
+        .message-avatar { /* Placeholder for avatar */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #7289da; /* Use user color later */
+            margin-right: 15px;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        .message-content {
+             display: flex;
+             flex-direction: column;
+        }
+        .message-sender {
+             color: #ffffff; /* White sender name */
+             font-weight: 500;
+             margin-bottom: 3px;
+             font-size: 15px;
+        }
+         .message-text {
+             color: #dcddde; /* Standard message text color */
+             line-height: 1.4;
+             word-wrap: break-word; /* Ensure long words wrap */
+        }
+
+        /* Chat Input Area */
+        .chat-input-container { /* Add a wrapper for padding */
+             padding: 0 20px 20px 20px; /* Padding around input */
+             flex-shrink: 0; /* Prevent input area shrinking */
+        }
+        .chat-input {
+            background-color: #40444b; /* Input background */
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .chat-input input[type="text"] {
+            flex-grow: 1;
+            background-color: transparent; /* Make it transparent */
+            border: none;
+            color: #dcddde;
+            font-size: 15px;
+            outline: none; /* Remove focus outline */
+            margin-right: 10px;
+        }
+         .chat-input input[type="text"]::placeholder {
+             color: #72767d;
+         }
+        /* Button styling */
+        .chat-input button {
+            background-color: transparent; /* No button bg */
+            color: #b9bbbe; /* Icon color */
+            border: none;
+            cursor: pointer; /* Shows it's clickable */
+            font-size: 16px; /* Adjusted size for text button */
+            padding: 5px 10px;
+            font-weight: 500;
+        }
+         .chat-input button:hover {
+              color: #dcddde;
+         }
+
+    </style>
+</head>
+<body>
+
+    <!-- Main Discord-like Interface -->
+    <div class="discord-container">
+
+        <!-- Far Left: Server List -->
+        <div class="server-list">
+            <div class="server-icon active">Me</div> <!-- Represents DMs -->
+            <div class="server-icon">S1</div> <!-- Placeholder Server 1 -->
+            <div class="server-icon">S2</div> <!-- Placeholder Server 2 -->
+            <div class="server-icon" style="background-color: #3ba55c;">+</div> <!-- Add Server -->
+        </div>
+
+        <!-- Left Sidebar: Channel/DM List + Search -->
+        <div class="channel-list">
+            <input type="search" class="search-bar" placeholder="Find or start a conversation (non-functional)">
+             <div class="dm-header">Direct Messages</div>
+             <div class="dm-placeholder">No friends yet. (Static display)</div>
+             <!-- DMs would need JS/backend to be added -->
+
+             <!-- About Link Added Here -->
+             <a href="about.html" class="about-link">About</a>
+
+        </div>
+
+        <!-- Main Chat Window -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <h3>General Chat</h3> <!-- Removed (Static) -->
+            </div>
+
+            <!-- Added ID here -->
+            <div class="chat-messages" id="chat-messages-list">
+                <!-- Static Messages Only -->
+                 <div class="message">
+                     <div class="message-avatar"></div> <!-- Placeholder Avatar -->
+                     <div class="message-content">
+                         <span class="message-sender">System</span>
+                         <span class="message-text">Welcome! Type a message below and press Enter or click Send.</span>
+                     </div>
+                 </div>
+                 <div class="message">
+                     <div class="message-avatar" style="background-color: #faa61a;"></div> <!-- Example different avatar color -->
+                     <div class="message-content">
+                         <span class="message-sender">Example User</span>
+                         <span class="message-text">This is just a hardcoded example message.</span>
+                     </div>
+                 </div>
+                 <!-- New messages will be added here by JavaScript -->
+            </div>
+
+            <div class="chat-input-container">
+                <div class="chat-input">
+                    <!-- Added ID here -->
+                    <input type="text" id="chat-input-field" placeholder="Type here...">
+                    <!-- Added ID here -->
+                    <button type="button" id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for sending messages -->
+    <script>
+        const messagesList = document.getElementById('chat-messages-list');
+        const messageInput = document.getElementById('chat-input-field');
+        const sendButton = document.getElementById('send-button');
+
+        function sendMessage() {
+            const messageText = messageInput.value.trim(); // Get text and remove leading/trailing whitespace
+
+            if (messageText !== '') { // Only send if message is not empty
+                // Create the new message element structure
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+
+                const avatarDiv = document.createElement('div');
+                avatarDiv.classList.add('message-avatar');
+                // You could customize avatar color/image later if needed
+                // avatarDiv.style.backgroundColor = '#5865f2'; // Example: User's own color
+
+                const contentDiv = document.createElement('div');
+                contentDiv.classList.add('message-content');
+
+                const senderSpan = document.createElement('span');
+                senderSpan.classList.add('message-sender');
+                senderSpan.textContent = 'You'; // Simple sender name for now
+
+                const textSpan = document.createElement('span');
+                textSpan.classList.add('message-text');
+                textSpan.textContent = messageText; // The actual message text
+
+                // Assemble the message elements
+                contentDiv.appendChild(senderSpan);
+                contentDiv.appendChild(textSpan);
+                messageDiv.appendChild(avatarDiv);
+                messageDiv.appendChild(contentDiv);
+
+                // Add the new message to the chat list
+                messagesList.appendChild(messageDiv);
+
+                // Clear the input field
+                messageInput.value = '';
+
+                // Scroll to the bottom of the chat messages
+                messagesList.scrollTop = messagesList.scrollHeight;
+
+                // Optional: Put focus back in the input field
+                messageInput.focus();
+            }
+        }
+
+        // Add event listener for the Send button click
+        sendButton.addEventListener('click', sendMessage);
+
+        // Add event listener for pressing Enter in the input field
+        messageInput.addEventListener('keypress', function(event) {
+            // Check if the key pressed was 'Enter' (key code 13)
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission behavior (if any)
+                sendMessage(); // Call the same send function
+            }
+        });
+
+    </script>
+
+</body>
+</html>
