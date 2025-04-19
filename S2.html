@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Theme Post Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #f1f1f1;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #ffffff;
+        }
+
+        article {
+            border: 1px solid #333;
+            margin: 30px auto;
+            max-width: 600px;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        header {
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-bottom: 1px solid #333;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        section {
+            padding: 10px 15px;
+        }
+
+        button {
+            background: none;
+            color: #f1f1f1;
+            border: 1px solid #444;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 7px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .comment-section {
+            border-top: 1px solid #2c2c2c;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        footer {
+            padding: 10px 15px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .comment-box {
+            display: flex;
+            margin-top: 8px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Feed (Dark Theme)</h1>
+
+    <!-- First Post -->
+    <article>
+        <header>CoolUser123</header>
+        <div>
+            <img src="https://via.placeholder.com/600x400?text=Sample+Post+Image" alt="Sample Post">
+        </div>
+        <section>
+            <button>❤️ Like</button>
+            <button>💬 Comment</button>
+        </section>
+        <section style="font-weight: bold;">
+            1,052 likes
+        </section>
+        <section>
+            <p><strong>CoolUser123</strong> This is a sample caption for the post. It can be a bit longer to show how text wraps. #HTMLonly #Example #SimplePost</p>
+        </section>
+        <section class="comment-section">
+            <p>View all 42 comments</p>
+            <div class="comment-box">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        </section>
+        <footer>2 HOURS AGO</footer>
+    </article>
+
+    <!-- Second Post -->
+    <article>
+        <header>AnotherUser</header>
+        <div>
+            <img src="https://via.placeholder.com/600x600?text=Another+Image" alt="Another Post">
+        </div>
+        <section>
+            <button>❤️ Like</button>
+            <button>💬 Comment</button>
+        </section>
+        <section style="font-weight: bold;">
+            55 likes
+        </section>
+        <section>
+            <p><strong>AnotherUser</strong> Second post here!</p>
+        </section>
+        <section class="comment-section">
+            <p>View all 3 comments</p>
+            <div class="comment-box">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        </section>
+        <footer>YESTERDAY</footer>
+    </article>
+
+</body>
+</html>

@@ -10,12 +10,12 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #36393f; /* Discord dark background */
+            background-color: #36393f; /* 
             color: #dcddde; /* Light text color */
             overflow: hidden; /* Prevent scrollbars on body */
         }
 
-        /* --- Main Chat Interface Container --- */
+        /* --- Main Chat Interface Container lisen shreyansh this is the chatting interface */
         .discord-container {
             display: flex;
             height: 100vh;
@@ -40,10 +40,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 10px;
+            font-size: 10px; /* Adjusted for slightly longer text */
             color: #b9bbbe;
-            cursor: pointer; /* Still indicates clickability, though non-functional */
+            cursor: pointer;
             transition: border-radius 0.2s ease, background-color 0.2s ease;
+            text-decoration: none; /* Remove underline from links */
+            font-weight: bold; /* Make text bold */
+            line-height: 1; /* Ensure text fits */
+            text-align: center; /* Center text if it wraps */
         }
         .server-icon:hover {
             border-radius: 35%; /* Squircle on hover */
@@ -214,7 +218,10 @@
         <div class="server-list">
             <div class="server-icon active">Me</div> <!-- Represents DMs -->
             <div class="server-icon">S1</div> <!-- Placeholder Server 1 -->
-            <div class="server-icon">S2</div> <!-- Placeholder Server 2 -->
+            <a href="S2.html" class="server-icon">S2</a> <!-- Link to S2.html -->
+            <!-- ****** NEW ICON ADDED HERE ****** -->
+            <a href="KTLCodeEditor.html" class="server-icon" title="KTL Code Editor">KTL</a>
+            <!-- ********************************** -->
             <div class="server-icon" style="background-color: #3ba55c;">+</div> <!-- Add Server -->
         </div>
 
