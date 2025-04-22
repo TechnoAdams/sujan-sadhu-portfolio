@@ -23,7 +23,12 @@
             margin-bottom: 30px;
             text-align: center;
         }
-        .back-link {
+        .button-container {
+            display: flex; /* Arrange buttons horizontally */
+            gap: 15px; /* Add space between buttons */
+            margin-top: 20px; /* Space below the heading */
+        }
+        .button-link { /* Renamed for clarity, applies to both buttons */
             display: inline-block; /* Make it block-like for styling */
             padding: 10px 20px;
             background-color: #7289da; /* Blurple background */
@@ -32,11 +37,12 @@
             border-radius: 5px;
             font-weight: 500;
             transition: background-color 0.2s ease;
+            text-align: center;
         }
-        .back-link:hover {
+        .button-link:hover {
             background-color: #5f73bc; /* Darker blurple on hover */
         }
-        .back-link span { /* Style the arrow */
+        .button-link span { /* Style the arrow */
              margin-right: 8px;
              font-weight: bold;
         }
@@ -46,10 +52,17 @@
 
     <h1>This website was made by Sujan and Shreyansh.</h1>
 
-    <!-- Link back to the main chat page (index.html) -->
-    <a href="home.html" class="back-link">
-        <span>←</span> Back to Chat
-    </a>
+    <div class="button-container">
+        <!-- Link back to the main chat page (home.html) -->
+        <a href="home.html" class="button-link">
+            <span>←</span> Back to Chat
+        </a>
+
+        <!-- Link to the new details page (img.html) -->
+        <a href="img.html" class="button-link">
+            More Details
+        </a>
+    </div>
 
 </body>
 </html>
