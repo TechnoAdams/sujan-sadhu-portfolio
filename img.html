@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KTL Fullscreen HD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: black;
+    }
+
+    /* Fullscreen Animated 4K Image */
+    .fullscreen-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      animation: zoomPulse 20s ease-in-out infinite, fadeIn 2s ease-in forwards;
+      filter: brightness(1.1) saturate(1.2);
+    }
+
+    @keyframes zoomPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        filter: blur(8px);
+      }
+      to {
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    .glow-text {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      text-align: center;
+      font-size: 4rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff,
+        0 0 60px #0ff;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      animation: textGlow 5s infinite alternate ease-in-out;
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #0ff;
+      }
+      100% {
+        text-shadow: 0 0 20px #0ff, 0 0 60px #0ff;
+      }
+    }
+
+    .glow-text span {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: revealLetter 0.6s forwards;
+    }
+
+    @keyframes revealLetter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sequential delay for each letter */
+    .glow-text span:nth-child(1) { animation-delay: 0s; }
+    .glow-text span:nth-child(2) { animation-delay: 0.2s; }
+    .glow-text span:nth-child(3) { animation-delay: 0.4s; }
+    .glow-text span:nth-child(4) { animation-delay: 0.6s; }
+    .glow-text span:nth-child(5) { animation-delay: 0.8s; }
+    .glow-text span:nth-child(6) { animation-delay: 1s; }
+    .glow-text span:nth-child(7) { animation-delay: 1.2s; }
+    .glow-text span:nth-child(8) { animation-delay: 1.4s; }
+    .glow-text span:nth-child(9) { animation-delay: 1.6s; }
+    .glow-text span:nth-child(10) { animation-delay: 1.8s; }
+    .glow-text span:nth-child(11) { animation-delay: 2s; }
+    .glow-text span:nth-child(12) { animation-delay: 2.2s; }
+    .glow-text span:nth-child(13) { animation-delay: 2.4s; }
+
+    .back-link {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 30px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 25px;
+      font-size: 18px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Use a real 4K image here -->
+  <img src="Htt.jpg" alt="Background" class="fullscreen-image" />
+
+  <div class="glow-text">
+    <span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span>
+    <span>&nbsp;</span>
+    <span>T</span><span>O</span>
+    <span>&nbsp;</span>
+    <span>K</span><span>T</span><span>L</span>
+  </div>
+
+  <a href="about.html" class="back-link">← Back</a>
+
+</body>
+</html>

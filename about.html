@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px; /* Add some padding */
+            background-color: #36393f; /* Discord dark background */
+            color: #dcddde; /* Light text color */
+            display: flex; /* Center content */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensure it takes full height */
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #ffffff; /* White heading */
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .button-container {
+            display: flex; /* Arrange buttons horizontally */
+            gap: 15px; /* Add space between buttons */
+            margin-top: 20px; /* Space below the heading */
+        }
+        .button-link { /* Renamed for clarity, applies to both buttons */
+            display: inline-block; /* Make it block-like for styling */
+            padding: 10px 20px;
+            background-color: #7289da; /* Blurple background */
+            color: #ffffff; /* White text */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+        .button-link:hover {
+            background-color: #5f73bc; /* Darker blurple on hover */
+        }
+        .button-link span { /* Style the arrow */
+             margin-right: 8px;
+             font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>This website was made by Sujan and Shreyansh.</h1>
+
+    <div class="button-container">
+        <!-- Link back to the main chat page (home.html) -->
+        <a href="home.html" class="button-link">
+            <span>←</span> Back to Chat
+        </a>
+
+        <!-- Link to the new details page (img.html) -->
+        <a href="img.html" class="button-link">
+            More Details
+        </a>
+    </div>
+
+</body>
+</html>
